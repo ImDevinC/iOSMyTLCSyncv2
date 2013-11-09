@@ -1,0 +1,572 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03252E521829C6A7001AF9E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03252E511829C6A7001AF9E1 /* Security.framework */; };
+		034E9042181D6E8600B9B368 /* mytlcShift.m in Sources */ = {isa = PBXBuildFile; fileRef = 034E9041181D6E8600B9B368 /* mytlcShift.m */; };
+		03675A8B181ADAB300FEB41E /* mytlcMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03675A8A181ADAB300FEB41E /* mytlcMainViewController.m */; };
+		03675A91181AF49D00FEB41E /* mytlcCalendarHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 03675A90181AF49D00FEB41E /* mytlcCalendarHandler.m */; };
+		03675A96181B2C4B00FEB41E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03675A95181B2C4B00FEB41E /* EventKit.framework */; };
+		03C36E6C181AC4C90018AB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C36E6B181AC4C90018AB0A /* Foundation.framework */; };
+		03C36E6E181AC4C90018AB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C36E6D181AC4C90018AB0A /* CoreGraphics.framework */; };
+		03C36E70181AC4C90018AB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C36E6F181AC4C90018AB0A /* UIKit.framework */; };
+		03C36E76181AC4C90018AB0A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03C36E74181AC4C90018AB0A /* InfoPlist.strings */; };
+		03C36E78181AC4C90018AB0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C36E77181AC4C90018AB0A /* main.m */; };
+		03C36E7C181AC4C90018AB0A /* mytlcAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C36E7B181AC4C90018AB0A /* mytlcAppDelegate.m */; };
+		03C36E7F181AC4C90018AB0A /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C36E7D181AC4C90018AB0A /* Main_iPhone.storyboard */; };
+		03C36E82181AC4C90018AB0A /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C36E80181AC4C90018AB0A /* Main_iPad.storyboard */; };
+		03C36E87181AC4C90018AB0A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C36E86181AC4C90018AB0A /* Images.xcassets */; };
+		03C36E8E181AC4C90018AB0A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C36E8D181AC4C90018AB0A /* XCTest.framework */; };
+		03C36E8F181AC4C90018AB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C36E6B181AC4C90018AB0A /* Foundation.framework */; };
+		03C36E90181AC4C90018AB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C36E6F181AC4C90018AB0A /* UIKit.framework */; };
+		03C36E98181AC4C90018AB0A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03C36E96181AC4C90018AB0A /* InfoPlist.strings */; };
+		03C36E9A181AC4C90018AB0A /* MyTLC_SyncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C36E99181AC4C90018AB0A /* MyTLC_SyncTests.m */; };
+		03E47607182C0B4C0089797A /* mytlcSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E47606182C0B4C0089797A /* mytlcSettingsTableViewController.m */; };
+		03E4760A182C57050089797A /* mytlcCalendarSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E47609182C57050089797A /* mytlcCalendarSelectTableViewController.m */; };
+		03E4760D182DDF0C0089797A /* mytlcAlarmTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E4760C182DDF0C0089797A /* mytlcAlarmTableViewController.m */; };
+		03E47610182E18EA0089797A /* mytlcSyncSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E4760F182E18EA0089797A /* mytlcSyncSettingsTableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		03C36E91181AC4C90018AB0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03C36E60181AC4C90018AB0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03C36E67181AC4C90018AB0A;
+			remoteInfo = "MyTLC Sync";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03252E511829C6A7001AF9E1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		034E9040181D6E8600B9B368 /* mytlcShift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcShift.h; sourceTree = "<group>"; };
+		034E9041181D6E8600B9B368 /* mytlcShift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcShift.m; sourceTree = "<group>"; };
+		03675A89181ADAB300FEB41E /* mytlcMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcMainViewController.h; sourceTree = "<group>"; };
+		03675A8A181ADAB300FEB41E /* mytlcMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcMainViewController.m; sourceTree = "<group>"; };
+		03675A8F181AF49D00FEB41E /* mytlcCalendarHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcCalendarHandler.h; sourceTree = "<group>"; };
+		03675A90181AF49D00FEB41E /* mytlcCalendarHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcCalendarHandler.m; sourceTree = "<group>"; };
+		03675A95181B2C4B00FEB41E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		03C36E68181AC4C90018AB0A /* MyTLC Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyTLC Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03C36E6B181AC4C90018AB0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		03C36E6D181AC4C90018AB0A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		03C36E6F181AC4C90018AB0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		03C36E73181AC4C90018AB0A /* MyTLC Sync-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyTLC Sync-Info.plist"; sourceTree = "<group>"; };
+		03C36E75181AC4C90018AB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		03C36E77181AC4C90018AB0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		03C36E79181AC4C90018AB0A /* MyTLC Sync-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyTLC Sync-Prefix.pch"; sourceTree = "<group>"; };
+		03C36E7A181AC4C90018AB0A /* mytlcAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mytlcAppDelegate.h; sourceTree = "<group>"; };
+		03C36E7B181AC4C90018AB0A /* mytlcAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mytlcAppDelegate.m; sourceTree = "<group>"; };
+		03C36E7E181AC4C90018AB0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		03C36E81181AC4C90018AB0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		03C36E86181AC4C90018AB0A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		03C36E8C181AC4C90018AB0A /* MyTLC SyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MyTLC SyncTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03C36E8D181AC4C90018AB0A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		03C36E95181AC4C90018AB0A /* MyTLC SyncTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyTLC SyncTests-Info.plist"; sourceTree = "<group>"; };
+		03C36E97181AC4C90018AB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		03C36E99181AC4C90018AB0A /* MyTLC_SyncTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTLC_SyncTests.m; sourceTree = "<group>"; };
+		03C36EA4181ACD560018AB0A /* Shift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shift.xcdatamodel; sourceTree = "<group>"; };
+		03E47605182C0B4C0089797A /* mytlcSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mytlcSettingsTableViewController.h; path = ../mytlcSettingsTableViewController.h; sourceTree = "<group>"; };
+		03E47606182C0B4C0089797A /* mytlcSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mytlcSettingsTableViewController.m; path = ../mytlcSettingsTableViewController.m; sourceTree = "<group>"; };
+		03E47608182C57050089797A /* mytlcCalendarSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcCalendarSelectTableViewController.h; sourceTree = "<group>"; };
+		03E47609182C57050089797A /* mytlcCalendarSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcCalendarSelectTableViewController.m; sourceTree = "<group>"; };
+		03E4760B182DDF0C0089797A /* mytlcAlarmTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcAlarmTableViewController.h; sourceTree = "<group>"; };
+		03E4760C182DDF0C0089797A /* mytlcAlarmTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcAlarmTableViewController.m; sourceTree = "<group>"; };
+		03E4760E182E18EA0089797A /* mytlcSyncSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcSyncSettingsTableViewController.h; sourceTree = "<group>"; };
+		03E4760F182E18EA0089797A /* mytlcSyncSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcSyncSettingsTableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03C36E65181AC4C90018AB0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03252E521829C6A7001AF9E1 /* Security.framework in Frameworks */,
+				03675A96181B2C4B00FEB41E /* EventKit.framework in Frameworks */,
+				03C36E6E181AC4C90018AB0A /* CoreGraphics.framework in Frameworks */,
+				03C36E70181AC4C90018AB0A /* UIKit.framework in Frameworks */,
+				03C36E6C181AC4C90018AB0A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03C36E89181AC4C90018AB0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03C36E8E181AC4C90018AB0A /* XCTest.framework in Frameworks */,
+				03C36E90181AC4C90018AB0A /* UIKit.framework in Frameworks */,
+				03C36E8F181AC4C90018AB0A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034E9043181D7B1400B9B368 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		03C36E5F181AC4C90018AB0A = {
+			isa = PBXGroup;
+			children = (
+				03C36E71181AC4C90018AB0A /* MyTLC Sync */,
+				03C36E93181AC4C90018AB0A /* MyTLC SyncTests */,
+				03C36E6A181AC4C90018AB0A /* Frameworks */,
+				03C36E69181AC4C90018AB0A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		03C36E69181AC4C90018AB0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03C36E68181AC4C90018AB0A /* MyTLC Sync.app */,
+				03C36E8C181AC4C90018AB0A /* MyTLC SyncTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03C36E6A181AC4C90018AB0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03252E511829C6A7001AF9E1 /* Security.framework */,
+				03675A95181B2C4B00FEB41E /* EventKit.framework */,
+				03C36E6B181AC4C90018AB0A /* Foundation.framework */,
+				03C36E6D181AC4C90018AB0A /* CoreGraphics.framework */,
+				03C36E6F181AC4C90018AB0A /* UIKit.framework */,
+				03C36E8D181AC4C90018AB0A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		03C36E71181AC4C90018AB0A /* MyTLC Sync */ = {
+			isa = PBXGroup;
+			children = (
+				034E9043181D7B1400B9B368 /* iPad */,
+				03C36E7D181AC4C90018AB0A /* Main_iPhone.storyboard */,
+				03C36E80181AC4C90018AB0A /* Main_iPad.storyboard */,
+				03C36E86181AC4C90018AB0A /* Images.xcassets */,
+				03C36E72181AC4C90018AB0A /* Supporting Files */,
+				03C36EA3181ACD560018AB0A /* Shift.xcdatamodeld */,
+				03C36E7A181AC4C90018AB0A /* mytlcAppDelegate.h */,
+				03C36E7B181AC4C90018AB0A /* mytlcAppDelegate.m */,
+				03E4760B182DDF0C0089797A /* mytlcAlarmTableViewController.h */,
+				03E4760C182DDF0C0089797A /* mytlcAlarmTableViewController.m */,
+				03675A8F181AF49D00FEB41E /* mytlcCalendarHandler.h */,
+				03675A90181AF49D00FEB41E /* mytlcCalendarHandler.m */,
+				03E47608182C57050089797A /* mytlcCalendarSelectTableViewController.h */,
+				03E47609182C57050089797A /* mytlcCalendarSelectTableViewController.m */,
+				03675A89181ADAB300FEB41E /* mytlcMainViewController.h */,
+				03675A8A181ADAB300FEB41E /* mytlcMainViewController.m */,
+				03E47605182C0B4C0089797A /* mytlcSettingsTableViewController.h */,
+				03E47606182C0B4C0089797A /* mytlcSettingsTableViewController.m */,
+				034E9040181D6E8600B9B368 /* mytlcShift.h */,
+				034E9041181D6E8600B9B368 /* mytlcShift.m */,
+				03E4760E182E18EA0089797A /* mytlcSyncSettingsTableViewController.h */,
+				03E4760F182E18EA0089797A /* mytlcSyncSettingsTableViewController.m */,
+			);
+			path = "MyTLC Sync";
+			sourceTree = "<group>";
+		};
+		03C36E72181AC4C90018AB0A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				03C36E73181AC4C90018AB0A /* MyTLC Sync-Info.plist */,
+				03C36E74181AC4C90018AB0A /* InfoPlist.strings */,
+				03C36E77181AC4C90018AB0A /* main.m */,
+				03C36E79181AC4C90018AB0A /* MyTLC Sync-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03C36E93181AC4C90018AB0A /* MyTLC SyncTests */ = {
+			isa = PBXGroup;
+			children = (
+				03C36E99181AC4C90018AB0A /* MyTLC_SyncTests.m */,
+				03C36E94181AC4C90018AB0A /* Supporting Files */,
+			);
+			path = "MyTLC SyncTests";
+			sourceTree = "<group>";
+		};
+		03C36E94181AC4C90018AB0A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				03C36E95181AC4C90018AB0A /* MyTLC SyncTests-Info.plist */,
+				03C36E96181AC4C90018AB0A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03C36E67181AC4C90018AB0A /* MyTLC Sync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03C36E9D181AC4C90018AB0A /* Build configuration list for PBXNativeTarget "MyTLC Sync" */;
+			buildPhases = (
+				03C36E64181AC4C90018AB0A /* Sources */,
+				03C36E65181AC4C90018AB0A /* Frameworks */,
+				03C36E66181AC4C90018AB0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MyTLC Sync";
+			productName = "MyTLC Sync";
+			productReference = 03C36E68181AC4C90018AB0A /* MyTLC Sync.app */;
+			productType = "com.apple.product-type.application";
+		};
+		03C36E8B181AC4C90018AB0A /* MyTLC SyncTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03C36EA0181AC4C90018AB0A /* Build configuration list for PBXNativeTarget "MyTLC SyncTests" */;
+			buildPhases = (
+				03C36E88181AC4C90018AB0A /* Sources */,
+				03C36E89181AC4C90018AB0A /* Frameworks */,
+				03C36E8A181AC4C90018AB0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03C36E92181AC4C90018AB0A /* PBXTargetDependency */,
+			);
+			name = "MyTLC SyncTests";
+			productName = "MyTLC SyncTests";
+			productReference = 03C36E8C181AC4C90018AB0A /* MyTLC SyncTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03C36E60181AC4C90018AB0A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = mytlc;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Layer 8 Applications";
+				TargetAttributes = {
+					03C36E67181AC4C90018AB0A = {
+						DevelopmentTeam = 5EGU57ZTEB;
+					};
+					03C36E8B181AC4C90018AB0A = {
+						TestTargetID = 03C36E67181AC4C90018AB0A;
+					};
+				};
+			};
+			buildConfigurationList = 03C36E63181AC4C90018AB0A /* Build configuration list for PBXProject "MyTLC Sync" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03C36E5F181AC4C90018AB0A;
+			productRefGroup = 03C36E69181AC4C90018AB0A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03C36E67181AC4C90018AB0A /* MyTLC Sync */,
+				03C36E8B181AC4C90018AB0A /* MyTLC SyncTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03C36E66181AC4C90018AB0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03C36E82181AC4C90018AB0A /* Main_iPad.storyboard in Resources */,
+				03C36E87181AC4C90018AB0A /* Images.xcassets in Resources */,
+				03C36E7F181AC4C90018AB0A /* Main_iPhone.storyboard in Resources */,
+				03C36E76181AC4C90018AB0A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03C36E8A181AC4C90018AB0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03C36E98181AC4C90018AB0A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03C36E64181AC4C90018AB0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03675A8B181ADAB300FEB41E /* mytlcMainViewController.m in Sources */,
+				03E4760A182C57050089797A /* mytlcCalendarSelectTableViewController.m in Sources */,
+				03675A91181AF49D00FEB41E /* mytlcCalendarHandler.m in Sources */,
+				03E47607182C0B4C0089797A /* mytlcSettingsTableViewController.m in Sources */,
+				03C36E7C181AC4C90018AB0A /* mytlcAppDelegate.m in Sources */,
+				034E9042181D6E8600B9B368 /* mytlcShift.m in Sources */,
+				03C36E78181AC4C90018AB0A /* main.m in Sources */,
+				03E47610182E18EA0089797A /* mytlcSyncSettingsTableViewController.m in Sources */,
+				03E4760D182DDF0C0089797A /* mytlcAlarmTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03C36E88181AC4C90018AB0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03C36E9A181AC4C90018AB0A /* MyTLC_SyncTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03C36E92181AC4C90018AB0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03C36E67181AC4C90018AB0A /* MyTLC Sync */;
+			targetProxy = 03C36E91181AC4C90018AB0A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		03C36E74181AC4C90018AB0A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C36E75181AC4C90018AB0A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		03C36E7D181AC4C90018AB0A /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C36E7E181AC4C90018AB0A /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		03C36E80181AC4C90018AB0A /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C36E81181AC4C90018AB0A /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		03C36E96181AC4C90018AB0A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03C36E97181AC4C90018AB0A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		03C36E9B181AC4C90018AB0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03C36E9C181AC4C90018AB0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		03C36E9E181AC4C90018AB0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyTLC Sync/MyTLC Sync-Prefix.pch";
+				INFOPLIST_FILE = "MyTLC Sync/MyTLC Sync-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		03C36E9F181AC4C90018AB0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyTLC Sync/MyTLC Sync-Prefix.pch";
+				INFOPLIST_FILE = "MyTLC Sync/MyTLC Sync-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		03C36EA1181AC4C90018AB0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyTLC Sync.app/MyTLC Sync";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyTLC Sync/MyTLC Sync-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MyTLC SyncTests/MyTLC SyncTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		03C36EA2181AC4C90018AB0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyTLC Sync.app/MyTLC Sync";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyTLC Sync/MyTLC Sync-Prefix.pch";
+				INFOPLIST_FILE = "MyTLC SyncTests/MyTLC SyncTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03C36E63181AC4C90018AB0A /* Build configuration list for PBXProject "MyTLC Sync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03C36E9B181AC4C90018AB0A /* Debug */,
+				03C36E9C181AC4C90018AB0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03C36E9D181AC4C90018AB0A /* Build configuration list for PBXNativeTarget "MyTLC Sync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03C36E9E181AC4C90018AB0A /* Debug */,
+				03C36E9F181AC4C90018AB0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03C36EA0181AC4C90018AB0A /* Build configuration list for PBXNativeTarget "MyTLC SyncTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03C36EA1181AC4C90018AB0A /* Debug */,
+				03C36EA2181AC4C90018AB0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		03C36EA3181ACD560018AB0A /* Shift.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				03C36EA4181ACD560018AB0A /* Shift.xcdatamodel */,
+			);
+			currentVersion = 03C36EA4181ACD560018AB0A /* Shift.xcdatamodel */;
+			path = Shift.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 03C36E60181AC4C90018AB0A /* Project object */;
+}
