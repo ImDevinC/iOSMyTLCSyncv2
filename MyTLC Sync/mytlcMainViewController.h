@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 @property (weak, nonatomic) IBOutlet UISwitch *chkSave;
 
-- (IBAction) login;
+- (IBAction) manualLogin;
 - (IBAction) hideKeyboard;
 
 @end

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DACEA70A-2477-4E0B-A177-6EEB5CD80F30</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MyTLC Sync</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>23A3736D-54F6-4D64-9FC9-CC57A043AB47</key>
+		<string>https://github.com/ImDevinC/iOSMyTLCSyncv2.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MyTLC Sync.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>23A3736D-54F6-4D64-9FC9-CC57A043AB47</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ImDevinC/iOSMyTLCSyncv2.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>23A3736D-54F6-4D64-9FC9-CC57A043AB47</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>23A3736D-54F6-4D64-9FC9-CC57A043AB47</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MyTLC Sync</string>
+		</dict>
+	</array>
+</dict>
+</plist>
