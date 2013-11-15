@@ -19,5 +19,6 @@
 
 - (IBAction) manualLogin;
 - (IBAction) hideKeyboard;
+- (void) autologin;
 
 @end

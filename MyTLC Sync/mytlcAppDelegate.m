@@ -7,12 +7,15 @@
 //
 
 #import "mytlcAppDelegate.h"
+#import "mytlcMainViewController.h"
 
 @implementation mytlcAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:30.0];
+
     return YES;
 }
 							
@@ -41,6 +44,62 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString* time = [defaults valueForKey:@"sync_time"];
+    
+    NSUInteger day = [defaults integerForKey:@"sync_day"];
+    
+    NSCalendar* cal = [NSCalendar currentCalendar];
+    
+    NSDate* date = [NSDate date];
+    
+    NSDateComponents* components = [cal components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+    
+    if (day != 8 && day!= 0 && day != [components weekday])
+    {
+        completionHandler(UIBackgroundFetchResultNoData);
+        
+        return;
+    }
+    
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    
+    [df setDateFormat:@"h:mm a"];
+    
+    NSDate* checkDate = [df dateFromString:time];
+    
+    NSInteger now_hour = [components hour];
+    
+    NSInteger now_minute = [components minute];
+    
+    components = [cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:checkDate];
+    
+    NSInteger check_hour = [components hour];
+    
+    NSInteger check_minute = [components minute];
+    
+    if (check_hour != now_hour || check_minute != now_minute)
+    {
+        completionHandler(UIBackgroundFetchResultNoData);
+        
+        return;
+    }
+    
+    UINavigationController *navigationController = (UINavigationController*) self.window.rootViewController;
+    
+    id topViewController = navigationController.topViewController;
+    
+    if ([topViewController isKindOfClass:[mytlcMainViewController class]])
+    {
+        [(mytlcMainViewController*)topViewController autologin];
+    }
+    
+    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 @end

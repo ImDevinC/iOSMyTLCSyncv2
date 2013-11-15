@@ -28,18 +28,15 @@ mytlcCalendarHandler* ch = nil;
 
 - (void) checkStatus
 {
-    while (true)
+    while (![ch hasCompleted])
     {
         if (![ch hasNewMessage]){
             continue;
         }
         
-        [self performSelectorOnMainThread:@selector(displayMessage) withObject:FALSE waitUntilDone:false];
+        [ch setMessageRead];
         
-        if ([ch hasCompleted])
-        {
-            break;
-        }
+        [self performSelectorOnMainThread:@selector(displayMessage) withObject:FALSE waitUntilDone:false];
     }
 }
 
@@ -54,10 +51,23 @@ mytlcCalendarHandler* ch = nil;
 {
     [lblStatus setText:[ch getMessage]];
     
-    [ch setMessageRead];
+    NSLog(@"%@", [ch getMessage]);
     
     if ([ch hasCompleted])
     {
+        if ([ch showNotifications])
+        {
+            UILocalNotification* notification = [[UILocalNotification alloc] init];
+            
+            notification.fireDate = [NSDate date];
+            
+            notification.alertBody = [ch getMessage];
+            
+            notification.timeZone = [NSTimeZone defaultTimeZone];
+            
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        }
+        
         [aivStatus stopAnimating];
         
         [btnLogin setEnabled:YES];
@@ -72,15 +82,13 @@ mytlcCalendarHandler* ch = nil;
 
 - (void) autologin
 {
-    NSLog(@"Starting");
-    
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 
     NSString* username = [defaults valueForKey:@"username"];
     
     NSString* password = [defaults valueForKey:@"password"];
     
-    [self login:username password:password];
+    [self login:username password:password showNotifications:YES];
 }
 
 - (IBAction) manualLogin
@@ -113,16 +121,16 @@ mytlcCalendarHandler* ch = nil;
     
     [defaults synchronize];
     
+    [self login:username password:password showNotifications:NO];
+}
+
+- (void)login:(NSString*)username password:(NSString*) password showNotifications:(BOOL) showNotifications
+{
+    NSDictionary *login = [[NSDictionary alloc] initWithObjectsAndKeys:username, @"username", password, @"password", [NSNumber numberWithBool:showNotifications], @"showNotification", nil];
+    
     [btnLogin setEnabled:NO];
     
     [aivStatus startAnimating];
-    
-    [self login:username password:password];
-}
-
-- (void)login:(NSString*)username password:(NSString*) password
-{
-    NSDictionary *login = [[NSDictionary alloc] initWithObjectsAndKeys:username, @"username", password, @"password", NO, @"showNotification", nil];
     
     NSOperationQueue* backgroundQueue = [NSOperationQueue new];
     
@@ -155,99 +163,13 @@ mytlcCalendarHandler* ch = nil;
 
 - (IBAction)unwindToMain:(UIStoryboardSegue *)segue
 {
-    [self setupAutoRun];
-}
 
-- (void) setupAutoRun
-{
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    
-    int sync_day = [defaults integerForKey:@"sync_day"];
-    
-    NSString* sync_time = [defaults valueForKey:@"sync_time"];
-    
-    if (sync_day == 7 || [sync_time isEqualToString:@""])
-    {
-        return;
-    }
-    
-    int repeat = 60 * 60 * 24 * 7;
-    
-    if (sync_day == 8)
-    {
-        repeat = 60 * 60 * 24;
-    }
-    NSString* username = [defaults valueForKey:@"username"];
-    
-    NSString* password = [defaults valueForKey:@"password"];
-
-    if (username != nil && ![username isEqualToString:@""] && password != nil && ![password isEqualToString:@""]) {
-        sync_day++;
-        
-        NSDate* date = [[NSDate alloc] init];
-        
-        NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        
-        NSDateComponents* components = [calendar components:NSWeekdayCalendarUnit fromDate:date];
-        
-        if (sync_day == 9)
-        {
-            [components setWeekday:[components weekday]];
-        }
-        else
-        {
-            [components setWeekday:sync_day - [components weekday]];
-        }
-
-        
-        date = [calendar dateByAddingComponents:components toDate:date options:0];
-        
-        NSDateFormatter* df = [[NSDateFormatter alloc] init];
-        
-        [df setDateFormat:@"h:mm a"];
-        
-        NSDate* time = [df dateFromString:sync_time];
-        
-        NSDateComponents* timeComponents = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate: time];
-        
-        components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
-        
-        [components setHour:[timeComponents hour]];
-        
-        [components setMinute:[timeComponents minute]];
-        
-        date = [calendar dateFromComponents:components];
-
-         if ([date earlierDate:[[NSDate alloc] init]] == date)
-        {
-            NSLog(@"Timer Date: %@\nCurrent Time: %@", date, [[NSDate alloc] init]);
-            if (sync_day == 9)
-            {
-                [components setDay:[components day] + 1];
-            }
-            else
-            {
-                [components setDay:[components day] + 7];
-            }
-            
-            date = [calendar dateFromComponents:components];
-        }
-        
-        NSTimer* timer = [[NSTimer alloc] initWithFireDate:date interval:repeat target:self selector:@selector(autologin) userInfo:nil repeats:YES];
-        
-        NSRunLoop* runner = [NSRunLoop currentRunLoop];
-        
-        [runner addTimer:timer forMode:NSDefaultRunLoopMode];
-        
-        NSLog(@"Timer added at: %@", date);
-    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }

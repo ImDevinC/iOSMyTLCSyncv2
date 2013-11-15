@@ -13,9 +13,10 @@
 @implementation mytlcCalendarHandler
 
 BOOL done = NO;
+BOOL newMessageExists = NO;
+BOOL notifications = NO;
 EKEventStore* eventStore = nil;
 NSString* message = nil;
-BOOL newMessageExists = NO;
 
 - (void) checkCalendarAccess:(NSMutableArray*) shifts
 {
@@ -59,7 +60,7 @@ BOOL newMessageExists = NO;
     
     NSString* calendar_id = [self getSelectedCalendarId];
     
-    int alarm_time = -1 * ([self getAlarmSettings] * 60);
+    NSUInteger alarm_time = -1 * ([self getAlarmSettings] * 60);
     
     for (mytlcShift* shift in shifts)
     {
@@ -150,7 +151,7 @@ BOOL newMessageExists = NO;
     return YES;
 }
 
-- (int) getAlarmSettings
+- (NSUInteger) getAlarmSettings
 {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 
@@ -160,11 +161,11 @@ BOOL newMessageExists = NO;
 - (NSString*) getData:(NSString*) url
 {
     NSURL* urlRequest = [NSURL URLWithString:url];
-    
+
     NSError* err = nil;
     
     NSString* result = [NSString stringWithContentsOfURL:urlRequest encoding:NSUTF8StringEncoding error:&err];
-    
+
     if (!err)
     {
         return result;
@@ -436,7 +437,7 @@ BOOL newMessageExists = NO;
     NSError* err = nil;
     
     NSData* responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&err];
-    
+   
     if (!err) {
         return [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];;
     }
@@ -471,6 +472,8 @@ BOOL newMessageExists = NO;
     NSString* username = [login valueForKey:@"username"];
     
     NSString* password = [login valueForKey:@"password"];
+    
+    notifications = ((int)[login valueForKey:@"showNotification"] == 1);
     
     [self updateProgress:@"Checking for network connection"];
     
@@ -559,7 +562,7 @@ BOOL newMessageExists = NO;
     
     NSDateComponents* dateComponents = [calendar components:(NSMonthCalendarUnit | NSDayCalendarUnit | NSYearCalendarUnit) fromDate:[NSDate date]];
     
-    NSString* month = [NSString stringWithFormat:@"%D", [dateComponents month] + 1];
+    NSString* month = [NSString stringWithFormat:@"%lD", [dateComponents month] + 1];
     
     NSString* year = [NSString stringWithFormat:@"%lD", (long) [dateComponents year]];
     
@@ -567,7 +570,7 @@ BOOL newMessageExists = NO;
     {
         month = @"01";
         
-        year = [NSString stringWithFormat:@"%D", [dateComponents year] + 1];
+        year = [NSString stringWithFormat:@"%lD", [dateComponents year] + 1];
     } else if ([month length] == 1) {
         month = [NSString stringWithFormat:@"0%@", month];
     }
@@ -632,6 +635,11 @@ BOOL newMessageExists = NO;
 - (void) setMessageRead
 {
     newMessageExists = NO;
+}
+
+- (BOOL) showNotifications
+{
+    return notifications;
 }
 
 
