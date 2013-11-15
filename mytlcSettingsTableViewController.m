@@ -98,6 +98,56 @@
     [alarm_cell.textLabel setText:display];
 }
 
+- (void) loadOffsetSettings
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSUInteger offset = [defaults integerForKey:@"hour_offset"];
+
+    NSString* display = [[NSString alloc] init];
+    
+    switch (offset)
+    {
+        case -5:
+            display = @"-5 Hours";
+            break;
+        case -4:
+            display = @"-4 Hours";
+            break;
+        case -3:
+            display = @"-3 Hours";
+            break;
+        case -2:
+            display = @"-2 Hours";
+            break;
+        case -1:
+            display = @"-1 Hour";
+            break;
+        case 0:
+            display = @"None";
+            break;
+        case 1:
+            display = @"1 Hour";
+            break;
+        case 2:
+            display = @"2 Hours";
+            break;
+        case 3:
+            display = @"3 Hours";
+            break;
+        case 4:
+            display = @"4 Hours";
+            break;
+        case 5:
+            display = @"5 Hours";
+            break;
+    }
+    
+    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+    
+    [alarm_cell.textLabel setText:display];
+}
+
 - (void) loadSavedSettings
 {
     [self checkCalendarPermissions];
@@ -105,6 +155,8 @@
     [self loadAlarmSettings];
     
     [self loadSyncSettings];
+    
+    [self loadOffsetSettings];
 }
 
 - (void) loadSyncSettings

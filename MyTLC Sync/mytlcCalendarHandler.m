@@ -179,6 +179,15 @@ NSString* message = nil;
     return message;
 }
 
+- (NSInteger) getOffsetSettings
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger offset = [defaults integerForKey:@"hour_offset"] * 60 * 60;
+    
+    return offset;
+}
+
 - (NSString*) getSelectedCalendarId
 {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -300,6 +309,8 @@ NSString* message = nil;
         
         NSArray* shifts = [schedule componentsSeparatedByString:@"<br>"];
         
+        NSInteger offset = [self getOffsetSettings];
+        
         for (int i = 0; i < [shifts count]; i++)
         {
             if (([shifts[i] rangeOfString:@"AM"].location != NSNotFound && [shifts[i] rangeOfString:@"<td>"].location == NSNotFound) || ([shifts[i] rangeOfString:@"PM"].location != NSNotFound && [shifts[i] rangeOfString:@"<td>"].location == NSNotFound))
@@ -326,9 +337,13 @@ NSString* message = nil;
                 
                 shift.startDate = [self parseTime:[NSString stringWithFormat:@"%@ %@, %@ %@", sMonth, date, sYear, time]];
                 
+                shift.startDate = [shift.startDate dateByAddingTimeInterval:offset];
+                
                 time = [shifts[i] substringFromIndex:split.location + 3];
                 
                 shift.endDate = [self parseTime:[NSString stringWithFormat:@"%@ %@, %@ %@", sMonth, date, sYear, time]];
+                
+                shift.endDate = [shift.endDate dateByAddingTimeInterval:offset];
                 
                 [workDays addObject:shift];
             }
