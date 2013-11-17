@@ -25,6 +25,7 @@
 @synthesize chkSave;
 
 mytlcCalendarHandler* ch = nil;
+BOOL showNotifications = NO;
 
 - (void) checkStatus
 {
@@ -50,12 +51,10 @@ mytlcCalendarHandler* ch = nil;
 - (void) displayMessage
 {
     [lblStatus setText:[ch getMessage]];
-    
-    NSLog(@"%@", [ch getMessage]);
-    
+
     if ([ch hasCompleted])
     {
-        if ([ch showNotifications])
+        if (showNotifications)
         {
             UILocalNotification* notification = [[UILocalNotification alloc] init];
             
@@ -71,6 +70,13 @@ mytlcCalendarHandler* ch = nil;
         [aivStatus stopAnimating];
         
         [btnLogin setEnabled:YES];
+        
+        if (self.fetchCompletionHandler)
+        {
+            self.fetchCompletionHandler(UIBackgroundFetchResultNewData);
+            
+            self.fetchCompletionHandler = nil;
+        }
     }
 }
 
@@ -80,7 +86,7 @@ mytlcCalendarHandler* ch = nil;
     [txtPassword resignFirstResponder];
 }
 
-- (void) autologin
+- (void) autologin:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 
@@ -88,7 +94,11 @@ mytlcCalendarHandler* ch = nil;
     
     NSString* password = [defaults valueForKey:@"password"];
     
-    [self login:username password:password showNotifications:YES];
+    self.fetchCompletionHandler = completionHandler;
+    
+    showNotifications = YES;
+    
+    [self login:username password:password];
 }
 
 - (IBAction) manualLogin
@@ -121,12 +131,12 @@ mytlcCalendarHandler* ch = nil;
     
     [defaults synchronize];
     
-    [self login:username password:password showNotifications:NO];
+    [self login:username password:password];
 }
 
-- (void)login:(NSString*)username password:(NSString*) password showNotifications:(BOOL) showNotifications
+- (void)login:(NSString*)username password:(NSString*) password
 {
-    NSDictionary *login = [[NSDictionary alloc] initWithObjectsAndKeys:username, @"username", password, @"password", [NSNumber numberWithBool:showNotifications], @"showNotification", nil];
+    NSDictionary *login = [[NSDictionary alloc] initWithObjectsAndKeys:username, @"username", password, @"password", nil];
     
     [btnLogin setEnabled:NO];
     

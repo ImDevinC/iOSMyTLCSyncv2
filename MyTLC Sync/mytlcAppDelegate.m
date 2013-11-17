@@ -96,10 +96,8 @@
     
     if ([topViewController isKindOfClass:[mytlcMainViewController class]])
     {
-        [(mytlcMainViewController*)topViewController autologin];
+        [(mytlcMainViewController*)topViewController autologin:completionHandler];
     }
-    
-    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 @end

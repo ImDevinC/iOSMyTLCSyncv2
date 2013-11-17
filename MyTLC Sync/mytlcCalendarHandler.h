@@ -13,7 +13,6 @@
 - (NSString*) getMessage;
 - (BOOL) hasCompleted;
 - (BOOL) hasNewMessage;
-- (BOOL) showNotifications;
 - (void) setMessageRead;
 
 @end

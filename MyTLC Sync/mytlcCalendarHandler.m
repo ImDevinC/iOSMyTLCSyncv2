@@ -14,7 +14,6 @@
 
 BOOL done = NO;
 BOOL newMessageExists = NO;
-BOOL notifications = NO;
 EKEventStore* eventStore = nil;
 NSString* message = nil;
 
@@ -46,7 +45,7 @@ NSString* message = nil;
                     }
                     
                     [self updateProgress:@"Adding shifts to calendar"];
-                    
+
                     [self createCalendarEntries:shifts];
                 }
             });
@@ -488,8 +487,6 @@ NSString* message = nil;
     
     NSString* password = [login valueForKey:@"password"];
     
-    notifications = ((int)[login valueForKey:@"showNotification"] == 1);
-    
     [self updateProgress:@"Checking for network connection"];
     
     NSString* data = [self getData:@"https://mytlc.bestbuy.com/etm/login.jsp"];
@@ -627,8 +624,6 @@ NSString* message = nil;
         [shifts addObjectsFromArray:shifts2];
     }
     
-
-    
     if ([shifts count] > 0)
     {
         [self updateProgress:@"Adding shifts to calendar"];
@@ -650,11 +645,6 @@ NSString* message = nil;
 - (void) setMessageRead
 {
     newMessageExists = NO;
-}
-
-- (BOOL) showNotifications
-{
-    return notifications;
 }
 
 

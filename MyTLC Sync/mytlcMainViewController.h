@@ -16,9 +16,10 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *aivStatus;
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 @property (weak, nonatomic) IBOutlet UISwitch *chkSave;
+@property (weak, nonatomic) void (^fetchCompletionHandler)(UIBackgroundFetchResult);
 
 - (IBAction) manualLogin;
 - (IBAction) hideKeyboard;
-- (void) autologin;
+- (void) autologin:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 @end

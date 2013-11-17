@@ -74,7 +74,7 @@
                         <color key="backgroundColor" red="0.0" green="0.23137254901960785" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="MyTLC Sync" id="GAy-TQ-Hv9">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="Settings" style="plain" id="QKJ-14-OMS">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Settings" id="QKJ-14-OMS">
                             <color key="tintColor" red="0.0" green="0.23137254900000001" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="RLU-VA-iio" kind="modal" id="75k-Ct-K92"/>
@@ -246,7 +246,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Calendar" id="Vk1-bY-GkB">
-                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="qtt-aL-vh0">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="qtt-aL-vh0">
                             <connections>
                                 <segue destination="wwh-mh-leP" kind="unwind" unwindAction="unwindToSettings:" id="HCZ-pK-2Da"/>
                             </connections>
