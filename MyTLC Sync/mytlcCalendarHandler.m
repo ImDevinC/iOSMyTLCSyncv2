@@ -344,6 +344,11 @@ NSString* message = nil;
                 
                 shift.endDate = [shift.endDate dateByAddingTimeInterval:offset];
                 
+                if (shift.endDate == [shift.endDate earlierDate:shift.startDate])
+                {
+                    shift.endDate = [shift.endDate dateByAddingTimeInterval:60 * 60 * 24];
+                }
+                
                 [workDays addObject:shift];
             }
         }
