@@ -59,7 +59,7 @@ NSString* message = nil;
     
     NSString* calendar_id = [self getSelectedCalendarId];
     
-    NSUInteger alarm_time = -1 * ([self getAlarmSettings] * 60);
+    NSInteger alarm_time = -1 * ([self getAlarmSettings] * 60);
     
     for (mytlcShift* shift in shifts)
     {
@@ -607,7 +607,7 @@ NSString* message = nil;
         return NO;
     }
     
-    [self updateProgress:@"Getting second months schedule"];
+    [self updateProgress:@"Checking for more shifts..."];
     
     data = [self postData:@"https://mytlc.bestbuy.com/etm/time/timesheet/etmTnsMonth.jsp" params:params];
     
