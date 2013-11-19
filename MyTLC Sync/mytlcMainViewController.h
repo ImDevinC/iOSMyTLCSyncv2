@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 @property (weak, nonatomic) IBOutlet UISwitch *chkSave;
 @property (weak, nonatomic) void (^fetchCompletionHandler)(UIBackgroundFetchResult);
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction) manualLogin;
 - (IBAction) hideKeyboard;

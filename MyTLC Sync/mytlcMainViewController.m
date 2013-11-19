@@ -23,6 +23,7 @@
 @synthesize aivStatus;
 @synthesize lblStatus;
 @synthesize chkSave;
+@synthesize scrollView;
 
 mytlcCalendarHandler* ch = nil;
 BOOL showNotifications = NO;
@@ -84,6 +85,7 @@ BOOL showNotifications = NO;
 {
     [txtUsername resignFirstResponder];
     [txtPassword resignFirstResponder];
+    [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
 }
 
 - (void) autologin:(void (^)(UIBackgroundFetchResult))completionHandler
@@ -164,8 +166,8 @@ BOOL showNotifications = NO;
         return NO;
     } else {
         [textField resignFirstResponder];
+        [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
         [self manualLogin];
-        return NO;
     }
     
     return YES;
@@ -182,6 +184,11 @@ BOOL showNotifications = NO;
     if (self) {
     }
     return self;
+}
+
+- (void) textFieldDidBeginEditing:(UITextField*) textField
+{
+    [scrollView setContentOffset:CGPointMake(0, txtUsername.center.y - 120) animated:YES];
 }
 
 - (void)viewDidLoad
@@ -223,6 +230,11 @@ BOOL showNotifications = NO;
             [chkSave setOn:NO];
         }
     }
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [scrollView setContentOffset:CGPointMake(0,0) animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
