@@ -58,6 +58,35 @@
     }
 }
 
+- (void) loadAddress
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString* street = [defaults valueForKey:@"address-street"];
+    
+    NSString* city = [defaults valueForKey:@"address-city"];
+    
+    NSString* state = [defaults valueForKey:@"address-state"];
+    
+    NSString* zip = [defaults valueForKey:@"address-zip"];
+    
+    NSString* address = @"None";
+    
+    if ([street length] > 0 && [city length] > 0 && [state length] > 0)
+    {
+        address = [[NSString alloc] initWithFormat:@"%@ %@, %@", [defaults valueForKey:@"address-street"], [defaults valueForKey:@"address-city"], [defaults valueForKey:@"address-state"]];
+        
+        if ([zip length] > 0)
+        {
+            address = [NSString stringWithFormat:@"%@ %@", address, zip];
+        }
+    }
+        
+    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:4]];
+    
+    [alarm_cell.textLabel setText:address];
+}
+
 - (void) loadAlarmSettings
 {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -157,6 +186,8 @@
     [self loadSyncSettings];
     
     [self loadOffsetSettings];
+    
+    [self loadAddress];
 }
 
 - (void) loadSyncSettings

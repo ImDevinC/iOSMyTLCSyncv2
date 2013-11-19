@@ -61,6 +61,8 @@ NSString* message = nil;
     
     NSInteger alarm_time = -1 * ([self getAlarmSettings] * 60);
     
+    NSString* address = [self getAddress];
+    
     for (mytlcShift* shift in shifts)
     {
         EKEvent* event = [EKEvent eventWithEventStore:eventStore];
@@ -76,6 +78,11 @@ NSString* message = nil;
         EKAlarm* alarm = [EKAlarm alarmWithRelativeOffset:alarm_time];
         
         event.alarms = [NSArray arrayWithObject:alarm];
+        
+        if ([address length] > 0)
+        {
+            event.location = address;
+        }
         
         [event setCalendar:[eventStore calendarWithIdentifier:calendar_id]];
         
@@ -148,6 +155,15 @@ NSString* message = nil;
     }
     
     return YES;
+}
+
+- (NSString*) getAddress
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString* address = [[NSString alloc] initWithFormat:@"%@ %@, %@ %@", [defaults valueForKey:@"address-street"], [defaults valueForKey:@"address-city"], [defaults valueForKey:@"address-state"], [defaults valueForKey:@"address-zip"]];
+    
+    return address;
 }
 
 - (NSUInteger) getAlarmSettings

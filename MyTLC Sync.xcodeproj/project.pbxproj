@@ -27,6 +27,7 @@
 		03C36E90181AC4C90018AB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C36E6F181AC4C90018AB0A /* UIKit.framework */; };
 		03C36E98181AC4C90018AB0A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03C36E96181AC4C90018AB0A /* InfoPlist.strings */; };
 		03C36E9A181AC4C90018AB0A /* MyTLC_SyncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C36E99181AC4C90018AB0A /* MyTLC_SyncTests.m */; };
+		03C8AE86183AC70100FB1304 /* mytlcAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C8AE85183AC70100FB1304 /* mytlcAddressViewController.m */; };
 		03E47607182C0B4C0089797A /* mytlcSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E47606182C0B4C0089797A /* mytlcSettingsTableViewController.m */; };
 		03E4760A182C57050089797A /* mytlcCalendarSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E47609182C57050089797A /* mytlcCalendarSelectTableViewController.m */; };
 		03E4760D182DDF0C0089797A /* mytlcAlarmTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E4760C182DDF0C0089797A /* mytlcAlarmTableViewController.m */; };
@@ -73,6 +74,8 @@
 		03C36E97181AC4C90018AB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03C36E99181AC4C90018AB0A /* MyTLC_SyncTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTLC_SyncTests.m; sourceTree = "<group>"; };
 		03C36EA4181ACD560018AB0A /* Shift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shift.xcdatamodel; sourceTree = "<group>"; };
+		03C8AE84183AC70100FB1304 /* mytlcAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcAddressViewController.h; sourceTree = "<group>"; };
+		03C8AE85183AC70100FB1304 /* mytlcAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcAddressViewController.m; sourceTree = "<group>"; };
 		03E47605182C0B4C0089797A /* mytlcSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mytlcSettingsTableViewController.h; path = ../mytlcSettingsTableViewController.h; sourceTree = "<group>"; };
 		03E47606182C0B4C0089797A /* mytlcSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mytlcSettingsTableViewController.m; path = ../mytlcSettingsTableViewController.m; sourceTree = "<group>"; };
 		03E47608182C57050089797A /* mytlcCalendarSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcCalendarSelectTableViewController.h; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				03C36E86181AC4C90018AB0A /* Images.xcassets */,
 				03C36E72181AC4C90018AB0A /* Supporting Files */,
 				03C36EA3181ACD560018AB0A /* Shift.xcdatamodeld */,
+				03C8AE84183AC70100FB1304 /* mytlcAddressViewController.h */,
+				03C8AE85183AC70100FB1304 /* mytlcAddressViewController.m */,
 				03C36E7A181AC4C90018AB0A /* mytlcAppDelegate.h */,
 				03C36E7B181AC4C90018AB0A /* mytlcAppDelegate.m */,
 				03E4760B182DDF0C0089797A /* mytlcAlarmTableViewController.h */,
@@ -319,6 +324,7 @@
 				03E4760A182C57050089797A /* mytlcCalendarSelectTableViewController.m in Sources */,
 				03675A91181AF49D00FEB41E /* mytlcCalendarHandler.m in Sources */,
 				03E47607182C0B4C0089797A /* mytlcSettingsTableViewController.m in Sources */,
+				03C8AE86183AC70100FB1304 /* mytlcAddressViewController.m in Sources */,
 				03C36E7C181AC4C90018AB0A /* mytlcAppDelegate.m in Sources */,
 				034E9042181D6E8600B9B368 /* mytlcShift.m in Sources */,
 				03C36E78181AC4C90018AB0A /* main.m in Sources */,
