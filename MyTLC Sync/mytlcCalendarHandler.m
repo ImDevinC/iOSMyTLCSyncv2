@@ -75,9 +75,12 @@ NSString* message = nil;
         
         event.endDate = shift.endDate;
         
-        EKAlarm* alarm = [EKAlarm alarmWithRelativeOffset:alarm_time];
-        
-        event.alarms = [NSArray arrayWithObject:alarm];
+        if (alarm_time != 0)
+        {
+            EKAlarm* alarm = [EKAlarm alarmWithRelativeOffset:alarm_time];
+            
+            event.alarms = [NSArray arrayWithObject:alarm];
+        }
         
         if ([address length] > 0)
         {
@@ -162,6 +165,11 @@ NSString* message = nil;
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
     NSString* address = [[NSString alloc] initWithFormat:@"%@ %@, %@ %@", [defaults valueForKey:@"address-street"], [defaults valueForKey:@"address-city"], [defaults valueForKey:@"address-state"], [defaults valueForKey:@"address-zip"]];
+    
+    if ([address isEqualToString:@"(null) (null), (null) (null)"])
+    {
+        return @"";
+    }
     
     return address;
 }
