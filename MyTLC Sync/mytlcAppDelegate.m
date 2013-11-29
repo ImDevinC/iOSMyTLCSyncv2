@@ -11,18 +11,14 @@
 
 @implementation mytlcAppDelegate
 
+@synthesize timerAppBg;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:30.0];
-
+//    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+//
     return YES;
-}
-							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -47,57 +43,58 @@
 }
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+{
+//    NSLog(@"Starting");
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    
+//    NSString* time = [defaults valueForKey:@"sync_time"];
+//    
+//    NSUInteger day = [defaults integerForKey:@"sync_day"];
+//    
+//    NSCalendar* cal = [NSCalendar currentCalendar];
+//    
+//    NSDate* date = [NSDate date];
+//    
+//    NSDateComponents* components = [cal components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+//    
+//    if (day != 8 && day!= 0 && day != [components weekday])
+//    {
+//        completionHandler(UIBackgroundFetchResultNoData);
+//        
+//        return;
+//    }
     
-    NSString* time = [defaults valueForKey:@"sync_time"];
+//    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+//    
+//    [df setDateFormat:@"h:mm a"];
+//    
+//    NSDate* checkDate = [df dateFromString:time];
+//    
+//    NSInteger now_hour = [components hour];
+//    
+//    NSInteger now_minute = [components minute];
+//    
+//    components = [cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:checkDate];
+//    
+//    NSInteger check_hour = [components hour];
+//    
+//    NSInteger check_minute = [components minute];
+//    
+//    if (check_hour != now_hour || check_minute != now_minute)
+//    {
+//        completionHandler(UIBackgroundFetchResultNoData);
+//        
+//        return;
+//    }
     
-    NSUInteger day = [defaults integerForKey:@"sync_day"];
-    
-    NSCalendar* cal = [NSCalendar currentCalendar];
-    
-    NSDate* date = [NSDate date];
-    
-    NSDateComponents* components = [cal components:(NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
-    
-    if (day != 8 && day!= 0 && day != [components weekday])
-    {
-        completionHandler(UIBackgroundFetchResultNoData);
-        
-        return;
-    }
-    
-    NSDateFormatter* df = [[NSDateFormatter alloc] init];
-    
-    [df setDateFormat:@"h:mm a"];
-    
-    NSDate* checkDate = [df dateFromString:time];
-    
-    NSInteger now_hour = [components hour];
-    
-    NSInteger now_minute = [components minute];
-    
-    components = [cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:checkDate];
-    
-    NSInteger check_hour = [components hour];
-    
-    NSInteger check_minute = [components minute];
-    
-    if (check_hour != now_hour || check_minute != now_minute)
-    {
-        completionHandler(UIBackgroundFetchResultNoData);
-        
-        return;
-    }
-    
-    UINavigationController *navigationController = (UINavigationController*) self.window.rootViewController;
-    
-    id topViewController = navigationController.topViewController;
-    
-    if ([topViewController isKindOfClass:[mytlcMainViewController class]])
-    {
-        [(mytlcMainViewController*)topViewController autologin:completionHandler];
-    }
+//    UINavigationController *navigationController = (UINavigationController*) self.window.rootViewController;
+//    
+//    id topViewController = navigationController.topViewController;
+//    
+//    if ([topViewController isKindOfClass:[mytlcMainViewController class]])
+//    {
+//        [(mytlcMainViewController*)topViewController autologin:completionHandler];
+//    }
 }
 
 @end

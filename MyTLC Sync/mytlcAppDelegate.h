@@ -11,5 +11,6 @@
 @interface mytlcAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSTimer* timerAppBg;
 
 @end

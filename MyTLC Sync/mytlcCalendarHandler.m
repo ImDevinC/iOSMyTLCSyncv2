@@ -34,23 +34,106 @@ NSString* message = nil;
                 else
                 {
                     [self updateProgress:@"Deleting old entries"];
+                    NSMutableArray* shiftsToAdd = [self removeDuplicatesFromShifts:shifts];
                     
-                    if (![self deleteCalendarEntries])
-                    {
-                        [self updateProgress:@"Couldn't delete calendar entries, please try again"];
-                        
-                        done = YES;
-                        
-                        return;
-                    }
+//                    if (![self deleteCalendarEntries])
+//                    {
+//                        [self updateProgress:@"Couldn't delete calendar entries, please try again"];
+//                        
+//                        done = YES;
+//                        
+//                        return;
+//                    }
                     
                     [self updateProgress:@"Adding shifts to calendar"];
 
-                    [self createCalendarEntries:shifts];
+                    [self createCalendarEntries:shiftsToAdd];
                 }
             });
         }];
     }
+}
+
+- (NSMutableArray*) removeDuplicatesFromShifts:(NSMutableArray*) newShifts
+{
+    NSCalendar* cal = [NSCalendar currentCalendar];
+    
+    NSDate* date = [NSDate date];
+    
+    NSDateComponents* components = [cal components:(NSMonthCalendarUnit | NSYearCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:date];
+    
+    [components setHour:0];
+    
+    [components setMinute:0];
+    
+    [components setSecond:0];
+    
+    NSDate* startDate = [cal dateFromComponents:components];
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableArray* shifts = [NSMutableArray arrayWithArray:[defaults arrayForKey:@"shifts"]];
+    
+    if ([shifts count] == 0)
+    {
+        return newShifts;
+    }
+    
+    for (unsigned long x = shifts.count - 1; x > 0; x--)
+    {
+        EKEvent* event = [eventStore eventWithIdentifier:shifts[x]];
+        
+        if ([event startDate] == [startDate earlierDate:[event startDate]])
+        {
+            [shifts removeObjectAtIndex:x];
+            continue;
+        }
+        
+        BOOL shiftFound = NO;
+        
+        for (unsigned long y = newShifts.count - 1; y > 0; y--)
+        {
+            if ([[event startDate] isEqualToDate:[newShifts[y] startDate]] && [[event endDate] isEqualToDate:[newShifts[y] endDate]])
+            {
+                shiftFound = YES;
+                [newShifts removeObjectAtIndex:y];
+                break;
+            }
+        }
+        
+        if (shiftFound == NO)
+        {
+            NSError* err;
+            [eventStore removeEvent:event span:EKSpanThisEvent error:&err];
+            [shifts removeObjectAtIndex:x];
+        }
+    }
+    
+    [defaults setObject:shifts forKey:@"shifts"];
+    
+    [defaults synchronize];
+    
+    return newShifts;
+    
+//    NSPredicate* predicate = [eventStore predicateForEventsWithStartDate:startDate endDate:endDate calendars:[NSArray arrayWithObjects:[eventStore calendarWithIdentifier:[self getSelectedCalendarId]], nil]];
+//    
+//    
+//    NSArray* events = [eventStore eventsMatchingPredicate:predicate];
+//    
+//    for (EKEvent *event in events)
+//    {
+//        if ([event.title isEqualToString:@"Work@BestBuy"])
+//        {
+//            NSError* err;
+//            
+//            if (![eventStore removeEvent:event span:EKSpanThisEvent error:&err])
+//            {
+//                if (err != nil) {
+//                }
+//            }
+//        }
+//    }
+    
 }
                            
 - (void) createCalendarEntries:(NSMutableArray*) shifts
@@ -62,6 +145,10 @@ NSString* message = nil;
     NSInteger alarm_time = -1 * ([self getAlarmSettings] * 60);
     
     NSString* address = [self getAddress];
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableArray* saveShifts = [[NSMutableArray alloc] initWithArray:[defaults arrayForKey:@"shifts"]];
     
     for (mytlcShift* shift in shifts)
     {
@@ -95,10 +182,15 @@ NSString* message = nil;
         
         if (!err)
         {
+            [saveShifts addObject:[event eventIdentifier]];
             count++;
         }
 
     }
+    
+    [defaults setObject:saveShifts forKey:@"shifts"];
+    
+    [defaults synchronize];
     
     [self getData:@"https://mytlc.bestbuy.com/etm/etmMenu.jsp?pageAction=logout"];
     

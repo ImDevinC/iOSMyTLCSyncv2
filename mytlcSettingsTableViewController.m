@@ -82,7 +82,7 @@
         }
     }
         
-    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:4]];
+    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
     
     [alarm_cell.textLabel setText:address];
 }
@@ -172,7 +172,7 @@
             break;
     }
     
-    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
     
     [alarm_cell.textLabel setText:display];
 }
@@ -183,7 +183,7 @@
     
     [self loadAlarmSettings];
     
-    [self loadSyncSettings];
+//    [self loadSyncSettings];
     
     [self loadOffsetSettings];
     
@@ -269,8 +269,6 @@
     [super viewDidLoad];
     
     [self loadSavedSettings];
-    
-    [self loadSyncSettings];
 }
 
 - (void)didReceiveMemoryWarning
