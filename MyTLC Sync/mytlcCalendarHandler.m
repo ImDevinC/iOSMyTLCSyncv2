@@ -36,15 +36,6 @@ NSString* message = nil;
                     [self updateProgress:@"Deleting old entries"];
                     NSMutableArray* shiftsToAdd = [self removeDuplicatesFromShifts:shifts];
                     
-//                    if (![self deleteCalendarEntries])
-//                    {
-//                        [self updateProgress:@"Couldn't delete calendar entries, please try again"];
-//                        
-//                        done = YES;
-//                        
-//                        return;
-//                    }
-                    
                     [self updateProgress:@"Adding shifts to calendar"];
 
                     [self createCalendarEntries:shiftsToAdd];
@@ -83,7 +74,7 @@ NSString* message = nil;
     {
         EKEvent* event = [eventStore eventWithIdentifier:shifts[x]];
         
-        if ([event startDate] == [startDate earlierDate:[event startDate]])
+        if ([event endDate] == [startDate earlierDate:[event endDate]])
         {
             [shifts removeObjectAtIndex:x];
             continue;
@@ -91,13 +82,12 @@ NSString* message = nil;
         
         BOOL shiftFound = NO;
         
-        for (unsigned long y = newShifts.count - 1; y > 0; y--)
+        for (long y = newShifts.count - 1; y >= 0; y--)
         {
             if ([[event startDate] isEqualToDate:[newShifts[y] startDate]] && [[event endDate] isEqualToDate:[newShifts[y] endDate]])
             {
                 shiftFound = YES;
                 [newShifts removeObjectAtIndex:y];
-                break;
             }
         }
         
@@ -114,26 +104,6 @@ NSString* message = nil;
     [defaults synchronize];
     
     return newShifts;
-    
-//    NSPredicate* predicate = [eventStore predicateForEventsWithStartDate:startDate endDate:endDate calendars:[NSArray arrayWithObjects:[eventStore calendarWithIdentifier:[self getSelectedCalendarId]], nil]];
-//    
-//    
-//    NSArray* events = [eventStore eventsMatchingPredicate:predicate];
-//    
-//    for (EKEvent *event in events)
-//    {
-//        if ([event.title isEqualToString:@"Work@BestBuy"])
-//        {
-//            NSError* err;
-//            
-//            if (![eventStore removeEvent:event span:EKSpanThisEvent error:&err])
-//            {
-//                if (err != nil) {
-//                }
-//            }
-//        }
-//    }
-    
 }
                            
 - (void) createCalendarEntries:(NSMutableArray*) shifts

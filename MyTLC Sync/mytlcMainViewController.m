@@ -42,6 +42,17 @@ BOOL showNotifications = NO;
     }
 }
 
+- (void) deleteEvent
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults removeObjectForKey:@"shifts"];
+    
+    [defaults synchronize];
+    
+    [lblStatus setText:@"Events cache cleared, remove events from the calendar manually"];
+}
+
 - (void) displayAlert:(NSString*) message
 {
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"MyTLC Sync" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
@@ -230,6 +241,7 @@ BOOL showNotifications = NO;
             [chkSave setOn:NO];
         }
     }
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
