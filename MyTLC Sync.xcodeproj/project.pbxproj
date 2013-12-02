@@ -32,6 +32,7 @@
 		03E4760A182C57050089797A /* mytlcCalendarSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E47609182C57050089797A /* mytlcCalendarSelectTableViewController.m */; };
 		03E4760D182DDF0C0089797A /* mytlcAlarmTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E4760C182DDF0C0089797A /* mytlcAlarmTableViewController.m */; };
 		03E47610182E18EA0089797A /* mytlcSyncSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E4760F182E18EA0089797A /* mytlcSyncSettingsTableViewController.m */; };
+		03ED4455184C419F007378B2 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 03ED4454184C419F007378B2 /* COPYING */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		03E4760C182DDF0C0089797A /* mytlcAlarmTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcAlarmTableViewController.m; sourceTree = "<group>"; };
 		03E4760E182E18EA0089797A /* mytlcSyncSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcSyncSettingsTableViewController.h; sourceTree = "<group>"; };
 		03E4760F182E18EA0089797A /* mytlcSyncSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcSyncSettingsTableViewController.m; sourceTree = "<group>"; };
+		03ED4454184C419F007378B2 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		03C36E5F181AC4C90018AB0A = {
 			isa = PBXGroup;
 			children = (
+				03ED4454184C419F007378B2 /* COPYING */,
 				03C36E71181AC4C90018AB0A /* MyTLC Sync */,
 				03C36E93181AC4C90018AB0A /* MyTLC SyncTests */,
 				03C36E6A181AC4C90018AB0A /* Frameworks */,
@@ -301,6 +304,7 @@
 				03C36E82181AC4C90018AB0A /* Main_iPad.storyboard in Resources */,
 				03C36E87181AC4C90018AB0A /* Images.xcassets in Resources */,
 				03C36E7F181AC4C90018AB0A /* Main_iPhone.storyboard in Resources */,
+				03ED4455184C419F007378B2 /* COPYING in Resources */,
 				03C36E76181AC4C90018AB0A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
