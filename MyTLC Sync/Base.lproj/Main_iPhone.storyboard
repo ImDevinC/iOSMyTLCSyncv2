@@ -120,8 +120,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="0.0" green="0.23137254900000001" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
-                        <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyTLC Sync v RC1.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nXv-2e-6BJ">
-                            <rect key="frame" x="0.0" y="449" width="320" height="44"/>
+                        <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyTLC Sync RC1.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nXv-2e-6BJ">
+                            <rect key="frame" x="0.0" y="541" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <rect key="contentStretch" x="1.3877787807814457e-17" y="1.3877787807814457e-17" width="1" height="1"/>
                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -129,10 +129,34 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <sections>
+                            <tableViewSection headerTitle="Event Title" id="m0T-84-XVK">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="title" textLabel="YQk-nI-zbU" style="IBUITableViewCellStyleDefault" id="3DA-sF-FoK">
+                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3DA-sF-FoK" id="CbK-90-OZv">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Work@BestBuy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YQk-nI-zbU">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="iT5-xj-s6P" kind="modal" id="k58-Tj-Mcv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Calendar to Sync" id="cbK-4H-3l8">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="default_calendar" textLabel="qQi-X4-SN3" style="IBUITableViewCellStyleDefault" id="cab-YV-MGS">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="211" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cab-YV-MGS" id="e9h-re-r7R">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -156,7 +180,7 @@
                             <tableViewSection headerTitle="Alarm" id="owi-h1-O44">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="alarm_setting" textLabel="cHY-Dn-E7x" style="IBUITableViewCellStyleDefault" id="KtZ-09-TCP">
-                                        <rect key="frame" x="0.0" y="211" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="303" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KtZ-09-TCP" id="zDB-sz-odO">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -180,7 +204,7 @@
                             <tableViewSection headerTitle="Timezone Offset" id="gz1-Ev-Vx7">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="offset" textLabel="Kbo-Ii-CZ2" style="IBUITableViewCellStyleDefault" id="439-43-npO">
-                                        <rect key="frame" x="0.0" y="303" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="395" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="439-43-npO" id="BW4-XL-QVZ">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -204,7 +228,7 @@
                             <tableViewSection headerTitle="Address" id="wIA-AD-YH8">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="address" textLabel="eLT-4d-inr" style="IBUITableViewCellStyleDefault" id="1w2-Vg-vUY">
-                                        <rect key="frame" x="0.0" y="395" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="487" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1w2-Vg-vUY" id="pT1-vo-fI8">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -246,6 +270,43 @@
                 <exit id="kcl-Ne-bmJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2570" y="35"/>
+        </scene>
+        <!--Mytlc Event Title View Controller - Event Title-->
+        <scene sceneID="6fD-lU-uSF">
+            <objects>
+                <viewController id="Q4X-ZL-d8b" customClass="mytlcEventTitleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Oki-AV-sFJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Syt-I9-XZz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="weE-Qw-VSg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Calendar entry title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4js-Yo-eWW">
+                                <rect key="frame" x="20" y="79" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.23137254900000001" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Event Title" id="ocb-s8-Rld">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="aOI-6d-hUc">
+                            <connections>
+                                <segue destination="NDe-Ps-Uno" kind="unwind" unwindAction="unwindToSettings:" id="RiA-yq-YKW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="txtTitle" destination="4js-Yo-eWW" id="l2j-5a-0Id"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UrW-hH-OVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="NDe-Ps-Uno" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3448" y="-1273"/>
         </scene>
         <!--Mytlc Calendar Select Table View Controller - Calendar-->
         <scene sceneID="Qpg-0G-YQG">
@@ -1113,6 +1174,25 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8a-2D-5Vo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3050" y="2153"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aZ2-D4-qpO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iT5-xj-s6P" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="quA-pY-qH6"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SXe-CB-pqm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Q4X-ZL-d8b" kind="relationship" relationship="rootViewController" id="za1-zd-p9T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lce-Ut-AWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3050" y="-1273"/>
         </scene>
     </scenes>
     <resources>

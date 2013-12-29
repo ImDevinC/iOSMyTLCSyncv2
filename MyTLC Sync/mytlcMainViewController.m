@@ -225,6 +225,20 @@ BOOL showNotifications = NO;
     
     BOOL firstRun = ![defaults boolForKey:@"firstRun"];
     
+    NSInteger version = [defaults integerForKey:@"version"];
+    
+    if (version < 1)
+    {
+        [defaults setValue:@"Work@BestBuy" forKey:@"title"];
+        
+        [self displayAlert:@"RC 1.3 Changelog:\n - Added custom event titles"];
+        
+        [defaults setInteger:1 forKey:@"version"];
+        
+        [defaults synchronize];
+        
+    }
+    
     if (firstRun) {
         [defaults setBool:YES forKey:@"firstRun"];
         
@@ -235,6 +249,8 @@ BOOL showNotifications = NO;
         [defaults setInteger:7 forKey:@"sync_day"];
         
         [defaults setValue:@"12:00 AM" forKey:@"sync_time"];
+        
+        [defaults setValue:@"Work@BestBuy" forKey:@"title"];
         
         [defaults synchronize];
     } else {

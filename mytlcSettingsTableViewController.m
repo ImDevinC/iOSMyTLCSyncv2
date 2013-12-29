@@ -51,7 +51,7 @@
 {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     
-    UITableViewCell* calendar_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    UITableViewCell* calendar_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
     
     NSString* calendar_id = [defaults objectForKey:@"calendar_id"];
     
@@ -93,7 +93,7 @@
         }
     }
         
-    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:4]];
     
     [alarm_cell.textLabel setText:address];
 }
@@ -133,7 +133,7 @@
             display = @"None";
     }
     
-    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
     
     [alarm_cell.textLabel setText:display];
 }
@@ -183,7 +183,7 @@
             break;
     }
     
-    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
     
     [alarm_cell.textLabel setText:display];
 }
@@ -191,6 +191,8 @@
 - (void) loadSavedSettings
 {
     [self checkCalendarPermissions];
+    
+    [self loadTitle];
     
     [self loadAlarmSettings];
     
@@ -252,6 +254,17 @@
     UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
     
     [alarm_cell.textLabel setText:display];
+}
+
+- (void) loadTitle
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString* title = [defaults valueForKey:@"title"];
+    
+    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    [alarm_cell.textLabel setText:title];
 }
 
 - (void) displayAlert:(NSString*) message

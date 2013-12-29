@@ -131,13 +131,15 @@ NSString* message = nil;
     
     NSMutableArray* saveShifts = [[NSMutableArray alloc] initWithArray:[defaults arrayForKey:@"shifts"]];
     
+    NSString* title = [self getTitle];
+    
     for (mytlcShift* shift in shifts)
     {
         EKEvent* event = [EKEvent eventWithEventStore:eventStore];
         
         event.notes = shift.department;
         
-        event.title = shift.title;
+        event.title = title;
         
         event.startDate = shift.startDate;
         
@@ -192,47 +194,6 @@ NSString* message = nil;
     return result;
 }
 
-- (BOOL) deleteCalendarEntries
-{
-    NSCalendar* cal = [NSCalendar currentCalendar];
-    
-    NSDate* date = [NSDate date];
-    
-    NSDateComponents* components = [cal components:(NSMonthCalendarUnit | NSYearCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:date];
-    
-    [components setHour:0];
-    
-    [components setMinute:0];
-    
-    [components setSecond:0];
-    
-    NSDate* startDate = [cal dateFromComponents:components];
-    
-    NSDate* endDate = [startDate dateByAddingTimeInterval:2592000];
-    
-    NSPredicate* predicate = [eventStore predicateForEventsWithStartDate:startDate endDate:endDate calendars:[NSArray arrayWithObjects:[eventStore calendarWithIdentifier:[self getSelectedCalendarId]], nil]];
-
-    
-    NSArray* events = [eventStore eventsMatchingPredicate:predicate];
-    
-    for (EKEvent *event in events)
-    {
-        if ([event.title isEqualToString:@"Work@BestBuy"])
-        {
-            NSError* err;
-            
-            if (![eventStore removeEvent:event span:EKSpanThisEvent error:&err])
-            {
-                if (err != nil) {
-                    return NO;
-                }
-            }
-        }
-    }
-    
-    return YES;
-}
-
 - (NSString*) getAddress
 {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -252,6 +213,13 @@ NSString* message = nil;
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 
     return [defaults integerForKey:@"alarm"];
+}
+
+- (NSString*) getTitle
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    return [defaults stringForKey:@"title"];
 }
 
 - (NSString*) getData:(NSString*) url
@@ -306,6 +274,16 @@ NSString* message = nil;
 - (BOOL) hasNewMessage
 {
     return newMessageExists;
+}
+
+- (BOOL) isTLCActive:(NSString*) data
+{
+    if ([data rangeOfString:@"/etm/time/timesheet/etmTnsMonth.jsp"].location == NSNotFound)
+    {
+        return FALSE;
+    }
+    
+    return TRUE;
 }
 
 - (NSMutableArray*) parseSchedule:(NSString*) data
@@ -422,8 +400,6 @@ NSString* message = nil;
                 }
                 
                 mytlcShift* shift = [[mytlcShift alloc] init];
-                
-                shift.title = @"Work@BestBuy";
                 
                 shift.department = dept;
             
@@ -632,6 +608,15 @@ NSString* message = nil;
     if ([data rangeOfString:@"etmMenu.jsp"].location == NSNotFound)
     {
         [self updateProgress:@"Incorrect username and password, please try again"];
+        
+        done = YES;
+        
+        return NO;
+    }
+    
+    if (![self isTLCActive:data])
+    {
+        [self updateProgress:@"MyTLC is currently undergoing maintenance, please try again later"];
         
         done = YES;
         

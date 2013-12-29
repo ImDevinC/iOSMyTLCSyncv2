@@ -12,6 +12,7 @@
 		03675A8B181ADAB300FEB41E /* mytlcMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03675A8A181ADAB300FEB41E /* mytlcMainViewController.m */; };
 		03675A91181AF49D00FEB41E /* mytlcCalendarHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 03675A90181AF49D00FEB41E /* mytlcCalendarHandler.m */; };
 		03675A96181B2C4B00FEB41E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03675A95181B2C4B00FEB41E /* EventKit.framework */; };
+		03BC3239186FBCBD0099D416 /* mytlcEventTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BC3238186FBCBD0099D416 /* mytlcEventTitleViewController.m */; };
 		03BDEACC18368CA50074F7A6 /* mytlcHourOffsetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BDEACB18368CA50074F7A6 /* mytlcHourOffsetTableViewController.m */; };
 		03C36E6C181AC4C90018AB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C36E6B181AC4C90018AB0A /* Foundation.framework */; };
 		03C36E6E181AC4C90018AB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C36E6D181AC4C90018AB0A /* CoreGraphics.framework */; };
@@ -54,6 +55,8 @@
 		03675A8F181AF49D00FEB41E /* mytlcCalendarHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcCalendarHandler.h; sourceTree = "<group>"; };
 		03675A90181AF49D00FEB41E /* mytlcCalendarHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcCalendarHandler.m; sourceTree = "<group>"; };
 		03675A95181B2C4B00FEB41E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		03BC3237186FBCBD0099D416 /* mytlcEventTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcEventTitleViewController.h; sourceTree = "<group>"; };
+		03BC3238186FBCBD0099D416 /* mytlcEventTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcEventTitleViewController.m; sourceTree = "<group>"; };
 		03BDEACA18368CA50074F7A6 /* mytlcHourOffsetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytlcHourOffsetTableViewController.h; sourceTree = "<group>"; };
 		03BDEACB18368CA50074F7A6 /* mytlcHourOffsetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytlcHourOffsetTableViewController.m; sourceTree = "<group>"; };
 		03C36E68181AC4C90018AB0A /* MyTLC Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyTLC Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +176,8 @@
 				03675A90181AF49D00FEB41E /* mytlcCalendarHandler.m */,
 				03E47608182C57050089797A /* mytlcCalendarSelectTableViewController.h */,
 				03E47609182C57050089797A /* mytlcCalendarSelectTableViewController.m */,
+				03BC3237186FBCBD0099D416 /* mytlcEventTitleViewController.h */,
+				03BC3238186FBCBD0099D416 /* mytlcEventTitleViewController.m */,
 				03BDEACA18368CA50074F7A6 /* mytlcHourOffsetTableViewController.h */,
 				03BDEACB18368CA50074F7A6 /* mytlcHourOffsetTableViewController.m */,
 				03675A89181ADAB300FEB41E /* mytlcMainViewController.h */,
@@ -326,6 +331,7 @@
 			files = (
 				03675A8B181ADAB300FEB41E /* mytlcMainViewController.m in Sources */,
 				03E4760A182C57050089797A /* mytlcCalendarSelectTableViewController.m in Sources */,
+				03BC3239186FBCBD0099D416 /* mytlcEventTitleViewController.m in Sources */,
 				03675A91181AF49D00FEB41E /* mytlcCalendarHandler.m in Sources */,
 				03E47607182C0B4C0089797A /* mytlcSettingsTableViewController.m in Sources */,
 				03C8AE86183AC70100FB1304 /* mytlcAddressViewController.m in Sources */,

@@ -17,13 +17,10 @@
  * along with MyTLC Sync.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface mytlcShift : NSObject
+@interface mytlcEventTitleViewController : UIViewController
 
-@property (copy) NSString* department;
-@property (copy) NSString* location;
-@property (copy) NSDate* startDate;
-@property (copy) NSDate* endDate;
+@property (weak, nonatomic) IBOutlet UITextField *txtTitle;
 
 @end
