@@ -226,33 +226,13 @@ NSMutableArray* g_cookies;
 
 - (NSString*) getData:(NSString*) url
 {
-//    NSURL* urlRequest = [NSURL URLWithString:url];
-//
-//    NSError* err = nil;
-//    
-//    NSString* result = [NSString stringWithContentsOfURL:urlRequest encoding:NSUTF8StringEncoding error:&err];
-//
-//    if (err)
-//    {
-//        return nil;
-//    }
-//    
-//    return result;
-    
     NSURL* urlRequest = [NSURL URLWithString:url];
     
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[urlRequest standardizedURL]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[urlRequest standardizedURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     
     NSError* err = nil;
     
     NSData* responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&err];
-    
-    if ([g_cookies count] == 0) {
-        for (NSHTTPCookie* nsCookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
-        {
-            [g_cookies addObject:nsCookie];
-        }
-    }
     
     if (!err) {
         return [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];;
@@ -298,16 +278,6 @@ NSMutableArray* g_cookies;
 - (BOOL) hasNewMessage
 {
     return newMessageExists;
-}
-
-- (BOOL) isTLCActive:(NSString*) data
-{
-    if ([[data lowercaseString] rangeOfString:@"/etm/time/timesheet/etmtnsmonth.jsp"].location == NSNotFound)
-    {
-        return FALSE;
-    }
-    
-    return TRUE;
 }
 
 - (NSMutableArray*) parseSchedule:(NSString*) data
@@ -542,7 +512,7 @@ NSMutableArray* g_cookies;
 {
     NSURL* urlRequest = [NSURL URLWithString:url];
     
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[urlRequest standardizedURL]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[urlRequest standardizedURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
 
     NSDictionary* headers = [NSHTTPCookie requestHeaderFieldsWithCookies:g_cookies];
     
@@ -642,15 +612,6 @@ NSMutableArray* g_cookies;
         return NO;
     }
     
-//    if (![self isTLCActive:data])
-//    {
-//        [self updateProgress:@"MyTLC is currently undergoing maintenance, please try again later"];
-//        
-//        done = YES;
-//        
-//        return NO;
-//    }
-    
     [self updateProgress:@"Getting schedule"];
     
     data = [self getData:@"https://mytlc.bestbuy.com/etm/time/timesheet/etmTnsMonth.jsp"];
@@ -734,13 +695,8 @@ NSMutableArray* g_cookies;
     
     NSMutableArray* shifts2 = [self parseSchedule:data];
     
-//    if ([shifts2 count] == 0) {
-//        NSLog(@"Failed");
-//    }
-    
     if ([shifts2 count] > 0)
     {
-//        NSLog(@"No fail");
         [shifts addObjectsFromArray:shifts2];
     }
     

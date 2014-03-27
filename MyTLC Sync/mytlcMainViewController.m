@@ -41,9 +41,9 @@ BOOL showNotifications = NO;
 
 - (void) checkStatus
 {
-    while (![ch hasCompleted])
+    while (![ch hasCompleted] || [aivStatus isAnimating])
     {
-        if (![ch hasNewMessage]){
+        if (![ch hasNewMessage] && ![ch hasCompleted]){
             continue;
         }
         
@@ -74,7 +74,7 @@ BOOL showNotifications = NO;
 - (void) displayMessage
 {
     [lblStatus setText:[ch getMessage]];
-
+    
     if ([ch hasCompleted])
     {
         if (showNotifications)
