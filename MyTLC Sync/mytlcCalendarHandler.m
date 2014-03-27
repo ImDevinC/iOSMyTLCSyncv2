@@ -27,7 +27,6 @@ BOOL done = NO;
 BOOL newMessageExists = NO;
 EKEventStore* eventStore = nil;
 NSString* message = nil;
-NSMutableArray* g_cookies;
 
 - (void) checkCalendarAccess:(NSMutableArray*) shifts
 {
@@ -462,27 +461,32 @@ NSMutableArray* g_cookies;
     return data;
 }
 
-- (NSString*) parseToken2:(NSString*) data
+- (NSString*) parseSecureToken:(NSString*) data
 {
-    if ([[data lowercaseString] rangeOfString:@"securetoken"].location == NSNotFound)
+    if ([[data lowercaseString] rangeOfString:@"securetoken"].location != NSNotFound)
     {
-        return nil;
+        NSRange begin = [[data lowercaseString] rangeOfString:@"securetoken"];
+        
+        data = [data substringFromIndex:begin.location + 20];
+        
+        if ([data rangeOfString:@"'/>"].location == NSNotFound)
+        {
+            return nil;
+        }
+        
+        NSRange end = [data rangeOfString:@"'/>"];
+        
+        data = [data substringToIndex:end.location];
+        
+        return data;
+    } else if ([[data lowercaseString] rangeOfString:@"wbat"].location != NSNotFound)
+    {
+        data = [self parseWbat:data];
+        
+        return data;
     }
     
-    NSRange begin = [[data lowercaseString] rangeOfString:@"securetoken"];
-    
-    data = [data substringFromIndex:begin.location + 20];
-    
-    if ([data rangeOfString:@"'/>"].location == NSNotFound)
-    {
-        return nil;
-    }
-    
-    NSRange end = [data rangeOfString:@"'/>"];
-    
-    data = [data substringToIndex:end.location];
-    
-    return data;
+    return nil;
 }
 
 - (NSString*) parseWbat:(NSString*) data
@@ -513,10 +517,6 @@ NSMutableArray* g_cookies;
     NSURL* urlRequest = [NSURL URLWithString:url];
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[urlRequest standardizedURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
-
-    NSDictionary* headers = [NSHTTPCookie requestHeaderFieldsWithCookies:g_cookies];
-    
-    [request setAllHTTPHeaderFields:headers];
     
     [request setHTTPMethod:@"POST"];
     
@@ -581,6 +581,10 @@ NSMutableArray* g_cookies;
     
     wbat = [self parseWbat:data];
     
+    NSLog(@"loginToken: %@", loginToken);
+    NSLog(@"wbat: %@", wbat);
+    NSLog(@"Data:\n %@", data);
+    
     if (!loginToken)
     {
         [self updateProgress:@"Couldn't get login token, do you have a valid network connection?"];
@@ -631,9 +635,14 @@ NSMutableArray* g_cookies;
     
     [self updateProgress:@"Getting next security token"];
     
-    NSString* securityToken = [self parseToken2:data];
+    NSString* securityToken = [self parseSecureToken:data];
     
     wbat = [self parseWbat:data];
+    
+    NSLog(@"loginToken: %@", loginToken);
+    NSLog(@"securityToken: %@", securityToken);
+    NSLog(@"wbat: %@", wbat);
+    NSLog(@"Data:\n %@", data);
     
     if (!securityToken && !wbat)
     {
@@ -650,7 +659,7 @@ NSMutableArray* g_cookies;
     
     NSDateComponents* dateComponents = [calendar components:(NSMonthCalendarUnit | NSDayCalendarUnit | NSYearCalendarUnit) fromDate:[NSDate date]];
     
-    NSString* month = [NSString stringWithFormat:@"%lD", [dateComponents month] + 1];
+    NSString* month = [NSString stringWithFormat:@"%D", [dateComponents month] + 1];
     
     NSString* year = [NSString stringWithFormat:@"%lD", (long) [dateComponents year]];
     
@@ -658,7 +667,7 @@ NSMutableArray* g_cookies;
     {
         month = @"01";
         
-        year = [NSString stringWithFormat:@"%lD", [dateComponents year] + 1];
+        year = [NSString stringWithFormat:@"%D", [dateComponents year] + 1];
     } else if ([month length] == 1) {
         month = [NSString stringWithFormat:@"0%@", month];
     }
@@ -689,6 +698,10 @@ NSMutableArray* g_cookies;
         done = YES;
         
         return NO;
+    }
+    
+    if ([[data lowercaseString] rangeOfString:@"session is compromised"].location != NSNotFound) {
+        NSLog(@"Broken");
     }
     
     [self updateProgress:@"Parsing second schedule"];

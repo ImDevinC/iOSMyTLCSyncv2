@@ -23,6 +23,6 @@
 
 @property NSMutableDictionary* settings;
 @property (strong, nonatomic) IBOutlet UITableView *settingsTable;
-
+@property (weak, nonatomic) IBOutlet UITextField *titleText;
 
 @end

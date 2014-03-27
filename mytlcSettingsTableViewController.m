@@ -27,6 +27,7 @@
 @implementation mytlcSettingsTableViewController
 
 @synthesize settingsTable;
+@synthesize titleText;
 
 - (void) checkCalendarPermissions
 {
@@ -262,9 +263,7 @@
     
     NSString* title = [defaults valueForKey:@"title"];
     
-    UITableViewCell* alarm_cell = [super tableView:settingsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    
-    [alarm_cell.textLabel setText:title];
+    [titleText setText:title];
 }
 
 - (void) displayAlert:(NSString*) message
@@ -292,6 +291,10 @@
 {
     [super viewDidLoad];
     
+    UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
     [self loadSavedSettings];
 }
 
@@ -300,5 +303,32 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction) hideKeyboard
+{
+    [titleText resignFirstResponder];
+    
+    NSString* title = [titleText text];
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setValue:title forKey:@"title"];
+    
+    [defaults synchronize];
+
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField*) textField
+{
+    if ([textField isEqual:titleText])
+    {
+        [self hideKeyboard];
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
 
 @end
